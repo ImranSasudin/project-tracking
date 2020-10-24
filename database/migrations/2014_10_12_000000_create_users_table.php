@@ -17,10 +17,17 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('address');
+            $table->string('company')->nullable();
+            $table->string('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('manager_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('manager_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 
