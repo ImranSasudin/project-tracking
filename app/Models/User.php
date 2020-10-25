@@ -20,6 +20,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'address',
+        'company',
+        'role',
+        'manager_id',
     ];
 
     /**
@@ -40,4 +45,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function projects()
+    {
+        return $this->hasMany('App\Models\Project', 'client_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\Users', 'manager_id');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Models\Task', 'user_id');
+    }
+
+    public function tasks_assignBy()
+    {
+        return $this->hasMany('App\Models\Task', 'assigned_by');
+    }
 }
