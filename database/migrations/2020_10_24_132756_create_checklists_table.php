@@ -17,7 +17,7 @@ class CreateChecklistsTable extends Migration
             $table->id();
             $table->string('number');
             $table->text('description');
-            $table->decimal('percentage', 5, 2);
+            $table->decimal('percentage', 5, 2)->nullable();
             $table->timestamps();
         });
     }
