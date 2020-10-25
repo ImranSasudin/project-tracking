@@ -14,5 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Route::get('home', 'LoginController@home')->name('home');
+Route::get('login', 'LoginController@login')->name('login');
+Route::post('login', 'LoginController@loginPost')->name('login.post');
+
+Route::prefix('staff')->name('staff.')->namespace('Staff')->group(function () {
+  
+    Route::get('dashboard', 'StaffController@dashboard')->name('dashboard');
+
+});
+
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+  
+    Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
+
+});
+
+Route::prefix('client')->name('client.')->namespace('Client')->group(function () {
+  
+    Route::get('dashboard', 'ClientController@dashboard')->name('dashboard');
+
 });
