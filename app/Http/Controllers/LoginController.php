@@ -19,13 +19,13 @@ class LoginController extends Controller
 
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password], $remember)){
             if(Auth::user()->role == "admin"){
-                echo "ADMIN";
+                return redirect()->route('admin.dashboard');
             }
             else if(Auth::user()->role == "staff"){
-                echo "STAFF";
+                return redirect()->route('staff.dashboard');
             }
             else if(Auth::user()->role == "client"){
-                echo "CLIENT";
+                return redirect()->route('client.dashboard');
             }
         } else {
             return redirect()->route('login')->withErrors(['Invalid Email / Password']);
