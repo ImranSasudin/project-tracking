@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function user()
     {
-        return $this->hasOne('App\Models\Users', 'manager_id');
+        return $this->belongsTo('App\Models\User', 'manager_id');
     }
 
     public function tasks()
