@@ -23,6 +23,6 @@ class TaskSeeder extends Seeder
             ['name'=>'Admendments', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ];
 
-        DB::table('tasks')->insert($data);
+        DB::table('task_type')->insert($data);
     }
 }
