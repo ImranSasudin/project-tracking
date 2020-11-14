@@ -37,6 +37,6 @@ class CreateTaskAssignedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_assigned');
+        Schema::dropIfExists('tasks');
     }
 }
