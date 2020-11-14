@@ -9,12 +9,29 @@ class Task extends Model
 {
     use HasFactory;
 
+    protected $table = 'tasks';
+
     protected $fillable = [
-        'name'
+        'task_type', 'project_id', 'user_id', 'assigned_by', 'description', 'status'
     ];
 
-    public function tasks()
+    public function project()
     {
-        return $this->hasMany('App\Models\TaskAssigned', 'task_id');
+        return $this->belongsTo('App\Models\Project', 'project_id');
+    }
+
+    public function task()
+    {
+        return $this->belongsTo('App\Models\Task', 'task_type');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function user_assignBy()
+    {
+        return $this->belongsTo('App\Models\User', 'assigned_by');
     }
 }
