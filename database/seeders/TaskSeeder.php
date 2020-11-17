@@ -24,5 +24,12 @@ class TaskSeeder extends Seeder
         ];
 
         DB::table('task_type')->insert($data);
+
+        $data2 = [
+            ['project_id'=>'1', 'task_type'=>'1', 'user_id'=>'2', 
+            'assigned_by'=>'1', 'description'=>'Task A', 'status'=>'In Progress', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+        ];
+
+        DB::table('tasks')->insert($data2);
     }
 }
