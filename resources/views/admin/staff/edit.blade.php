@@ -66,9 +66,8 @@
                                     <div class="form-group">
                                         <label>Role</label>
                                         <select name="role" class="form-control" required>
-                                            <option value="{{ $staff->role }}" hidden selected>{{ $staff->role }}</option>
-                                            <option value="staff">Staff</option>
-                                            <option value="admin">Admin</option>
+                                            <option value="staff" {{ $staff->role == 'staff' ? 'selected' : '' }}>Staff</option>
+                                            <option value="admin" {{ $staff->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                         </select>
                                     </div>
                                 </div>
@@ -76,9 +75,11 @@
                                     <div class="form-group " id="manager" style="display:none;">
                                         <label for="exampleInputPassword1">Manager</label>
                                         <select name="manager" class="form-control select2" required>
-                                            <option value="{{ $staff->user()->first() != null ? $staff->user()->first()->id : '' }}" hidden selected>{{ $staff->user()->first() != null ? $staff->user()->first()->name : ' - ' }}</option>
+                                            @if($staff->user()->first() == null)
+                                            <option value="" disabled selected>-- Please Select --</option>
+                                            @endif
                                             @foreach($admins as $admin)
-                                            <option value="{{ $admin->id }}">{{ $admin->name }}</option>
+                                            <option value="{{ $admin->id }}" {{ $staff->user()->first() != null && $staff->user()->first()->id == $admin->id ? 'selected' : '' }}>{{ $admin->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
