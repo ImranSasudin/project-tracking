@@ -56,6 +56,13 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::get('project/delete/{id}', 'ProjectController@delete')->name('project.delete');
     Route::get('project/edit/{id}', 'ProjectController@edit')->name('project.edit');
     Route::post('project/update', 'ProjectController@update')->name('project.update');
+
+    Route::get('task', 'TaskController@index')->name('task');
+    Route::get('task/create', 'TaskController@create')->name('task.create');
+    Route::post('task/create', 'TaskController@store')->name('task.store');
+    Route::get('task/delete/{id}', 'TaskController@delete')->name('task.delete');
+    Route::get('task/edit/{id}', 'TaskController@edit')->name('task.edit');
+    Route::post('task/update', 'TaskController@update')->name('task.update');
 });
 
 Route::prefix('client')->name('client.')->namespace('Client')->group(function () {
