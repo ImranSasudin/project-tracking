@@ -20,9 +20,9 @@ class Task extends Model
         return $this->belongsTo('App\Models\Project', 'project_id');
     }
 
-    public function task()
+    public function taskType()
     {
-        return $this->belongsTo('App\Models\Task', 'task_type');
+        return $this->belongsTo('App\Models\TaskType', 'task_type');
     }
 
     public function user()
