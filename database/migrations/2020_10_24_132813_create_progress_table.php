@@ -17,7 +17,6 @@ class CreateProgressTable extends Migration
             $table->unsignedBigInteger('checklist_id');
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('updated_by')->nullable();
-            $table->string('status');
             $table->timestamps();
 
             $table->primary(['checklist_id', 'project_id']);

@@ -12,7 +12,7 @@ class Progress extends Model
     protected $table = 'progress';
     
     protected $fillable = [
-        'checklist_id', 'project_id', 'updated_by', 'status'
+        'checklist_id', 'project_id', 'updated_by'
     ];
 
     public function project()
