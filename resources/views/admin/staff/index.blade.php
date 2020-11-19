@@ -33,9 +33,6 @@
         @endif
         <div class="row">
             <div class="col-12">
-            
-     
-     
             <a role="button" href="{{ route('admin.staff.create') }}" class="btn bg-gradient-primary text-white">Add New</a>
                 <!-- Card -->
                 <div class="card mt-3">
