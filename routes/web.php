@@ -29,7 +29,12 @@ Route::post('account/update/password', 'UserController@updatePassword')->name('a
 Route::prefix('staff')->name('staff.')->namespace('Staff')->group(function () {
   
     Route::get('dashboard', 'StaffController@dashboard')->name('dashboard');
-    
+
+    Route::get('project', 'ProjectController@index')->name('project');
+ 
+    Route::get('task', 'TaskController@index')->name('task');
+    Route::get('task/edit/{id}', 'TaskController@edit')->name('task.edit');
+    Route::post('task/update', 'TaskController@update')->name('task.update');
 
 });
 
