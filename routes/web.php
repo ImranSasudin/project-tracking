@@ -56,6 +56,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::get('project/delete/{id}', 'ProjectController@delete')->name('project.delete');
     Route::get('project/edit/{id}', 'ProjectController@edit')->name('project.edit');
     Route::post('project/update', 'ProjectController@update')->name('project.update');
+    Route::post('project/update/progress', 'ProjectController@updateProgress')->name('project.update.progress');
 
     Route::get('task', 'TaskController@index')->name('task');
     Route::get('task/create', 'TaskController@create')->name('task.create');
