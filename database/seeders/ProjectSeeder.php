@@ -23,6 +23,15 @@ class ProjectSeeder extends Seeder
         $data2 = [
             ['checklist_id'=>'1', 'project_id'=>'1', 'updated_by'=>'1',
             'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
+            ['checklist_id'=>'2', 'project_id'=>'1', 'updated_by'=>'1',
+            'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
+            ['checklist_id'=>'3', 'project_id'=>'1', 'updated_by'=>'1',
+            'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+
+            ['checklist_id'=>'4', 'project_id'=>'1', 'updated_by'=>'1',
+            'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ];
 
         DB::table('projects')->insert($data);
