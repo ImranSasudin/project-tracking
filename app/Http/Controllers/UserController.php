@@ -57,7 +57,7 @@ class UserController extends Controller
         } else {
             $user->password = Hash::make($newPassword);
             $user->save();
-            return redirect()->route('account.edit')->withSuccess('Password succesfully updated');
+            return redirect()->route('account.view')->withSuccess('Password succesfully updated');
         }
 
     }
