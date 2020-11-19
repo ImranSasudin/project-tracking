@@ -119,7 +119,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" id="task" class="nav-link">
+            <a href="{{ route('admin.task') }}" id="task" class="nav-link">
               <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Task
