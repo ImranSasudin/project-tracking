@@ -36,7 +36,7 @@
                 <!-- Card -->
                 <div class="card mt-3">
                     <div class="card-header">
-                        <h3 class="card-title">Client</h3>
+                        <h3 class="card-title">Project</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
