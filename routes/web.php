@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('home', 'LoginController@home')->name('home');
 Route::get('login', 'LoginController@login')->name('login');
 Route::post('login', 'LoginController@loginPost')->name('login.post');
+Route::get('logout', 'LoginController@logout')->name('logout');
 
 Route::get('account/view', 'UserController@view')->name('account.view');
 Route::get('account/edit', 'UserController@edit')->name('account.edit');

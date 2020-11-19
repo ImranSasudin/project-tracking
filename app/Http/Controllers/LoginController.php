@@ -31,4 +31,11 @@ class LoginController extends Controller
             return redirect()->route('login')->withErrors(['Invalid Email / Password']);
         }
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
+    }
 }
