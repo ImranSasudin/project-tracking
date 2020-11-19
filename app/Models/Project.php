@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use DB;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class Project extends Model
 {
@@ -26,5 +29,20 @@ class Project extends Model
     public function progress()
     {
         return $this->hasMany('App\Models\Progress', 'project_id');
+    }
+
+    public function countProgress()
+    {
+        $percentage = DB::table('checklists')
+                ->join('progress', 'checklists.id', '=', 'progress.checklist_id')
+                ->where('progress.project_id', $this->id)
+                ->sum('checklists.percentage');
+                
+        return $percentage;
+    }
+
+    public function formattedDate()
+    {
+        return Carbon::parse($this->date)->format('d F, Y');
     }
 }
