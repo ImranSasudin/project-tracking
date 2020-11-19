@@ -20,7 +20,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -31,47 +31,26 @@
                     <form role="form" action="{{ route('admin.project.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Enter email" required>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Enter name" required>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="number" name="phone" class="form-control" placeholder="Enter phone number" required>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>Type</label>
+                                <input type="text" name="type" class="form-control" placeholder="Enter type" required>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" name="address" placeholder="Enter address" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Company</label>
-                                        <input type="text" name="company" class="form-control" placeholder="Enter company name" required>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" name="date" min="{{ date("Y-m-d") }}" class="form-control" placeholder="Enter date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Client</label>
+                                <select name="client" class="form-control select2" required>
+                                    <option value="" disabled selected>-- Please Select --</option>
+                                    @foreach($clients as $client)
+                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <!-- /.card-body -->
