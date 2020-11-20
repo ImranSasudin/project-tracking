@@ -76,4 +76,12 @@ Route::prefix('client')->name('client.')->namespace('Client')->group(function ()
   
     Route::get('dashboard', 'ClientController@dashboard')->name('dashboard');
 
+    Route::get('project', 'ProjectController@index')->name('project');
+    Route::get('project/create', 'ProjectController@create')->name('project.create');
+    Route::post('project/create', 'ProjectController@store')->name('project.store');
+    Route::get('project/edit/{id}', 'ProjectController@edit')->name('project.edit');
+    Route::post('project/update', 'ProjectController@update')->name('project.update');
+
+    Route::get('progress/view/{id}', 'ProjectController@view')->name('progress.view');
+
 });

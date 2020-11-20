@@ -1,4 +1,4 @@
-@extends('admin.layout.nav')
+@extends('client.layout.nav')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">

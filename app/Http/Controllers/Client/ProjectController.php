@@ -62,8 +62,6 @@ class ProjectController extends Controller
 
    public function view($id)
    {
-        $project = Project::find($id);
-        $clients = User::where('role','client')->get();
         $progress = DB::table('checklists')
                     ->leftJoin('progress', function($join) use ($id)
                     {
@@ -73,10 +71,8 @@ class ProjectController extends Controller
                     ->orderBy('number')
                     ->get();
 
-        return view('client.project.edit', [
-            'project' => $project,
+        return view('client.project.progress', [
             'progress' => $progress,
-            'clients' => $clients,
         ]);
    }
 

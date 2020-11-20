@@ -1,4 +1,4 @@
-@extends('staff.layout.nav')
+@extends('client.layout.nav')
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -61,7 +61,8 @@
                                             <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="{{ number_format($project->countProgress(), 2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ number_format($project->countProgress(), 2) }}%;">
                                             {{ floatval(number_format($project->countProgress(), 2)) }} % 
                                             </div>
-                                        </div>
+                                        </div> 
+                                        <a href="{{ route('client.progress.view', $project->id) }}" class="badge badge-pill badge-info">View</a>     
                                     </td>
                                     <td>
                                         <a href="{{ route('client.project.edit', $project->id) }}"><i style="color: Dodgerblue;" class="far fa-edit"></i></a>
