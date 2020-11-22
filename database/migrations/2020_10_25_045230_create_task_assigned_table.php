@@ -19,6 +19,8 @@ class CreateTaskAssignedTable extends Migration
             $table->unsignedBigInteger('task_type');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('assigned_by')->nullable();
+            $table->string('file_path')->nullable();
+            $table->string('file_name')->nullable();
             $table->text('description');
             $table->string('status');
             $table->timestamps();

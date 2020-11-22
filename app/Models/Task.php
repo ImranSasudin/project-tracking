@@ -12,7 +12,7 @@ class Task extends Model
     protected $table = 'tasks';
 
     protected $fillable = [
-        'task_type', 'project_id', 'user_id', 'assigned_by', 'description', 'status'
+        'task_type', 'project_id', 'user_id', 'assigned_by', 'description', 'status', 'file_path', 'file_name'
     ];
 
     public function project()
