@@ -33,6 +33,8 @@
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
   <style>
     select {
       text-transform: capitalize
@@ -148,10 +150,10 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+      <strong>Copyright &copy; Roslan Salleh Architecture.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.5
+        <!--<b>Version</b> 3.0.5-->
       </div>
     </footer>
 
@@ -210,6 +212,7 @@
   <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('dist/js/demo.js') }}"></script>
+  <!--<script src="{{ asset('test.js') }}"></script>-->
   <script>
     $(function() {
       $("#example1").DataTable({
