@@ -83,6 +83,7 @@ Route::prefix('client')->name('client.')->namespace('Client')->group(function ()
     Route::post('project/create', 'ProjectController@store')->name('project.store');
     Route::get('project/edit/{id}', 'ProjectController@edit')->name('project.edit');
     Route::post('project/update', 'ProjectController@update')->name('project.update');
+    Route::post('project/file/update', 'ProjectController@updateFile')->name('project.file.update');
 
     Route::get('progress/view/{id}', 'ProjectController@view')->name('progress.view');
 
