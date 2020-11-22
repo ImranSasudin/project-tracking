@@ -47,6 +47,7 @@
                                     <th>Date</th>
                                     <th>Client</th>
                                     <th>Progress</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,6 +64,9 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <td>
+                                        <a href="{{ route('staff.project.edit', $project->id) }}"><i style="color: Dodgerblue;" class="far fa-edit"></i></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -73,6 +77,7 @@
                                     <th>Date</th>
                                     <th>Client</th>
                                     <th>Progress</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>

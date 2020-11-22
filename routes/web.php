@@ -31,6 +31,8 @@ Route::prefix('staff')->name('staff.')->namespace('Staff')->group(function () {
     Route::get('dashboard', 'StaffController@dashboard')->name('dashboard');
 
     Route::get('project', 'ProjectController@index')->name('project');
+    Route::get('project/edit/{id}', 'ProjectController@edit')->name('project.edit');
+    Route::post('project/file/update', 'ProjectController@updateFile')->name('project.file.update');
  
     Route::get('task', 'TaskController@index')->name('task');
     Route::get('task/edit/{id}', 'TaskController@edit')->name('task.edit');
