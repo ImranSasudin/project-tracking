@@ -80,7 +80,7 @@
                                     <tr>
                                         <th>Num.</th>
                                         <th>Description</th>
-                                        <th>Percentage (%)</th>
+                                        <th>Percentage ({{ floatval(number_format($project->countProgress(), 2)) }}%)</th>
                                         <th></th>
                                     </tr>
                                 </thead>
