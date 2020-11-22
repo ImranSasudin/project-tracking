@@ -56,7 +56,7 @@
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->type }}</td>
                                     <td>{{ $project->formattedDate() }}</td>
-                                    <td style="text-transform: capitalize;">{{ $project->user()->first()->name }}</td>
+                                    <td style="text-transform: capitalize;">{{ $project->user()->first()->name != null ? $project->user()->first()->name : 'Deleted' }}</td>
                                     <td>
                                         <div class="progress border">
                                             <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="{{ number_format($project->countProgress(), 2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ number_format($project->countProgress(), 2) }}%;">
