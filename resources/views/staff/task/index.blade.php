@@ -55,7 +55,10 @@
                                 <tr>
                                     <td>{{ $task->project()->first()->name }}</td>
                                     <td>{{ $task->taskType()->first()->name }}</td>
-                                    <td>{{ $task->description }}</td>
+                                    <td>
+                                        {{ $task->description }} <br><br>
+                                        <b>File Attached</b> : <a target="_blank" href="{{ '/storage/'.$task->file_path }}">{{ $task->file_name }}</a>
+                                    </td>
                                     <td style="text-transform: capitalize;">{{ $task->user_assignBy()->first()->name }}</td>
                                     <td>{{ $task->status }}</td>
                                     <td>
