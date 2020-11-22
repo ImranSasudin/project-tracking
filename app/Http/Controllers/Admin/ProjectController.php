@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Project;
 use DB;
 use App\Models\Progress;
+use App\Models\ProjectFile;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 
 class ProjectController extends Controller
@@ -55,10 +58,13 @@ class ProjectController extends Controller
                     ->orderBy('number')
                     ->get();
 
+        $files = ProjectFile::where('project_id', $id)->get();
+
         return view('admin.project.edit', [
             'project' => $project,
             'progress' => $progress,
             'clients' => $clients,
+            'files' => $files,
         ]);
     }
 
@@ -97,5 +103,38 @@ class ProjectController extends Controller
         $project = Project::destroy($id);
 
         return redirect()->route('admin.project')->withSuccess('Project succesfully deleted');
+    }
+
+    public function updateFile(Request $request)
+    {
+        $projectFile = new ProjectFile();
+        $projectFile->file_name = $request->file_name;
+        $projectFile->project_id = $request->id;
+
+        if ($request->hasfile('file')) {
+            Storage::delete('public/' . $projectFile->file_path);
+            $file = $request->file('file');
+            $name = md5(microtime() . $file->getClientOriginalName());
+            $fileName = $name . '.' . $file->extension();
+            // Insert file into folder
+            $path = $file->storeAs('public/project', $fileName);
+            // Remove 'public/' in path to store in DB
+            $path = Str::replaceFirst('public/', '', $path);
+
+            $projectFile->file_path = $path;
+        }
+
+        $projectFile->save();
+
+        return redirect()->route('admin.project.edit', $projectFile->project_id);
+    }
+
+    public function deleteFile($id)
+    {
+        $projectFile = ProjectFile::find($id);
+        Storage::delete('public/' . $projectFile->file_path);
+        $projectFile->delete();
+
+        return redirect()->route('admin.project.edit', $projectFile->project_id);
     }
 }

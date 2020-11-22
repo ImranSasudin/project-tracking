@@ -30,6 +30,11 @@ class Project extends Model
     {
         return $this->hasMany('App\Models\Progress', 'project_id');
     }
+    
+    public function files()
+    {
+        return $this->hasMany('App\Models\Progress', 'project_id');
+    }
 
     public function countProgress()
     {
