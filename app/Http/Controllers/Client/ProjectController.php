@@ -92,7 +92,6 @@ class ProjectController extends Controller
         $projectFile->project_id = $request->id;
 
         if ($request->hasfile('file')) {
-            Storage::delete('public/' . $projectFile->file_path);
             $file = $request->file('file');
             $name = md5(microtime() . $file->getClientOriginalName());
             $fileName = $name . '.' . $file->extension();
