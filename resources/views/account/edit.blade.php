@@ -20,6 +20,20 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-sm-12">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-7">
                 <!-- general form elements -->
                 <div class="card card-primary">
@@ -54,15 +68,15 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                            <label>Address</label>
-                                            <textarea class="form-control" name="address" placeholder="Enter address" required>{{ $user->address }}</textarea>
+                                        <label>Address</label>
+                                        <textarea class="form-control" name="address" placeholder="Enter address" required>{{ $user->address }}</textarea>
                                     </div>
-                                </div>                      
+                                </div>
                                 @if (Auth::user()->role == 'client')
-                                    <div class="form-group">
-                                            <label>Company</label>
-                                            <input type="text" name="company" class="form-control" placeholder="Enter company name" value="{{ $user->company }}"  required>
-                                    </div>
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" name="company" class="form-control" placeholder="Enter company name" value="{{ $user->company }}" required>
+                                </div>
                                 @endif
                             </div>
                         </div>
@@ -85,18 +99,8 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form role="form" action="{{ route('account.update.password') }}" method="POST">
-                        @csrf                       
+                        @csrf
                         <div class="card-body">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems.<br><br>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             <div class="form-group">
                                 <label>Current Password</label>
                                 <input type="password" name="currentPass" class="form-control" placeholder="Enter current password" required>
@@ -108,7 +112,7 @@
                             <div class="form-group">
                                 <label>Re-enter New password</label>
                                 <input type="password" name="reNewPass" class="form-control" placeholder="Re-enter new password" required>
-                            </div>                       
+                            </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">

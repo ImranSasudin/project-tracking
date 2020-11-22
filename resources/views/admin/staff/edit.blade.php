@@ -22,6 +22,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -107,24 +117,24 @@ $("#user").parent().addClass("menu-open");
 $("#user").addClass("active");
 $("#staff").addClass("active");
 $(document).ready(function() {
-    var input_manager = $("select[name='manager']");
-    if($("select[name='role']").val() == "staff"){
-        $('#manager').show();
-        input_manager.attr('required', 'required');
-    } else if($("select[name='role']").val() == "admin"){
-        $('#manager').hide();
-        input_manager.removeAttr('required');
-    }
+var input_manager = $("select[name='manager']");
+if($("select[name='role']").val() == "staff"){
+$('#manager').show();
+input_manager.attr('required', 'required');
+} else if($("select[name='role']").val() == "admin"){
+$('#manager').hide();
+input_manager.removeAttr('required');
+}
 });
 $("select[name='role']").on('change', function(){
-    var input_manager = $("select[name='manager']");
-    if($("select[name='role']").val() == "staff"){
-        $('#manager').show();
-        input_manager.attr('required', 'required');
-    } else if($("select[name='role']").val() == "admin"){
-        $('#manager').hide();
-        input_manager.removeAttr('required');
-    }
+var input_manager = $("select[name='manager']");
+if($("select[name='role']").val() == "staff"){
+$('#manager').show();
+input_manager.attr('required', 'required');
+} else if($("select[name='role']").val() == "admin"){
+$('#manager').hide();
+input_manager.removeAttr('required');
+}
 });
 
 @endsection

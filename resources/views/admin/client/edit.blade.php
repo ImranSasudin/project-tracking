@@ -22,6 +22,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -57,12 +67,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Company</label>
-                                        <input type="text" name="company" class="form-control" placeholder="Enter company name" value="{{ $client->company }}"  required>
+                                        <input type="text" name="company" class="form-control" placeholder="Enter company name" value="{{ $client->company }}" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" name="address" placeholder="Enter address" required>{{ $client->address }}</textarea>
+                                    <label>Address</label>
+                                    <textarea class="form-control" name="address" placeholder="Enter address" required>{{ $client->address }}</textarea>
                                 </div>
                             </div>
                         </div>

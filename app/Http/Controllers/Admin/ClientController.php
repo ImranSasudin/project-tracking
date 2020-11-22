@@ -54,6 +54,10 @@ class ClientController extends Controller
 
     public function update(Request $request)
     {
+        request()->validate([
+            'email' => 'unique:users,email,' . $request->id,
+        ]);
+        
         $client = User::find($request->id);
         $client->name = $request->name;
         $client->email = $request->email;

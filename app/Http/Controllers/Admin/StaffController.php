@@ -62,6 +62,10 @@ class StaffController extends Controller
 
     public function update(Request $request)
     {
+        request()->validate([
+            'email' => 'unique:users,email,' . $request->id,
+        ]);
+        
         $staff = User::find($request->id);
         $staff->name = $request->name;
         $staff->email = $request->email;
