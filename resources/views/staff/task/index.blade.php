@@ -60,7 +60,7 @@
                                         <b>File Attached</b> : <a target="_blank" href="{{ '/storage/'.$task->file_path }}">{{ $task->file_name }}</a>
                                     </td>
                                     <td style="text-transform: capitalize;">{{ $task->user_assignBy()->first()->name }}</td>
-                                    <td>{{ $task->status }}</td>
+                                    <td><span class="p-1 mb-2 {{ $task->status == "In Progress" ? 'bg-warning' : 'bg-success' }}  text-white">{{ $task->status }}</span></td>
                                     <td>
                                         <a href="{{ route('staff.task.edit', $task->id) }}"><i style="color: Dodgerblue;" class="far fa-edit"></i></a>
                                     </td>
