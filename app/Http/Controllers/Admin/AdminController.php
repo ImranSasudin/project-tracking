@@ -12,10 +12,14 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $user = User::count();
+        $staff = User::whereIn('role',['staff','admin'])->count();
+        $client = User::where('role','client')->count();
+        $project = Project::count();
 
         return view('admin.dashboard',[
-            'user' => $user,
+            'staff' => $staff,
+            'client' => $client,
+            'project' => $project,
         ]);
     }
 }
