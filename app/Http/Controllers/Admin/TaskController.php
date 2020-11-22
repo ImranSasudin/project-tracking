@@ -8,6 +8,8 @@ use App\Models\Task;
 use App\Models\TaskType;
 use App\Models\User;
 use App\Models\Project;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 
 class TaskController extends Controller
@@ -44,6 +46,18 @@ class TaskController extends Controller
         $task->description = $request->description;
         $task->assigned_by = Auth::user()->id;
         $task->status = 'In Progress';
+        $task->file_name = $request->file_name;
+
+        $file = $request->file('file');
+        $name = md5(microtime() . $file->getClientOriginalName());
+        $fileName = $name . '.' . $file->extension();
+        // Insert file into folder
+        $path = $file->storeAs('public/task', $fileName);
+        // Remove 'public/' in path to store in DB
+        $path = Str::replaceFirst('public/', '', $path);
+        
+        $task->file_path = $path;
+
         $task->save();
 
         return redirect()->route('admin.task')->withSuccess('New task successfully created');
@@ -62,6 +76,21 @@ class TaskController extends Controller
     {
         $task = Task::find($request->id);
         $task->description = $request->description;
+        $task->file_name = $request->file_name;
+        
+        if ($request->hasfile('file')) {
+            Storage::delete('public/' . $task->file_path);
+            $file = $request->file('file');
+            $name = md5(microtime() . $file->getClientOriginalName());
+            $fileName = $name . '.' . $file->extension();
+            // Insert file into folder
+            $path = $file->storeAs('public/task', $fileName);
+            // Remove 'public/' in path to store in DB
+            $path = Str::replaceFirst('public/', '', $path);
+
+            $task->file_path = $path;
+        }
+
         $task->save();
 
         return redirect()->route('admin.task')->withSuccess('Task succesfully updated');
@@ -69,7 +98,9 @@ class TaskController extends Controller
 
     public function delete($id)
     {
-        $Task = Task::destroy($id);
+        $task = Task::find($id);
+        Storage::delete('public/' . $task->file_path);
+        $task->delete();
 
         return redirect()->route('admin.task')->withSuccess('Task succesfully deleted');
     }

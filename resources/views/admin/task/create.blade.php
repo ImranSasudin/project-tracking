@@ -28,7 +28,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('admin.task.store') }}" method="POST">
+                    <form role="form" action="{{ route('admin.task.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -61,6 +61,11 @@
                             <div class="form-group">
                                 <label>Description</label>
                                 <textarea class="form-control" name="description" placeholder="Enter task description" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>File</label>
+                                <input type="text" name="file_name" class="form-control mb-1" placeholder="Enter file name" required>
+                                <input type="file" name="file" class="form-control-file" id="customFile" required>
                             </div>
                         </div> <!-- /.card-body -->
                         <div class="card-footer">

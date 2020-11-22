@@ -28,25 +28,30 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('admin.task.update') }}" method="POST">
+                    <form role="form" action="{{ route('admin.task.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{ $task->id }}">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Project</label>
-                                <input type="text"  class="form-control"value="{{ $task->project()->first()->name }}" readonly>
+                                <input type="text"  class="form-control" value="{{ $task->project()->first()->name }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Task Type</label>
-                                <input type="text"  class="form-control"value="{{ $task->taskType()->first()->name }}" readonly>
+                                <input type="text"  class="form-control" value="{{ $task->taskType()->first()->name }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Staff</label>
-                                <input type="text"  class="form-control"value="{{ $task->user()->first()->name }}" readonly>                            
+                                <input type="text"  class="form-control" value="{{ $task->user()->first()->name }}" readonly>                            
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
                                 <textarea class="form-control" name="description" placeholder="Enter task description" required>{{ $task->description }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>File</label>
+                                <input type="text" name="file_name" class="form-control mb-1" value="{{ $task->file_name }}" placeholder="Enter file name" required>
+                                <input type="file" name="file" class="form-control-file" id="customFile">
                             </div>
                         </div> <!-- /.card-body -->
                         <div class="card-footer">
