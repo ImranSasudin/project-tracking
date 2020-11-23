@@ -75,8 +75,7 @@ class ProjectController extends Controller
                     ->orderBy('number')
                     ->get();
 
-        $project = Project::where('client_id', Auth::user()->id)
-                    ->first();
+        $project = Project::find($id);
 
         return view('client.project.progress', [
             'progress' => $progress,
