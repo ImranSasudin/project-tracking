@@ -44,6 +44,14 @@
                                 <label>Date</label>
                                 <input type="date" name="date" min="{{ date("Y-m-d") }}" value="{{ $project->date }}" class="form-control" placeholder="Enter date" readonly>
                             </div>
+                            <div class="form-group">
+                                <label>Client Name</label>
+                                <input type="text" name="client_name" value="{{ $project->user()->first()->name }}" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" name="company" value="{{ $project->user()->first()->company }}" class="form-control" readonly>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
