@@ -48,7 +48,7 @@
                                 <select name="client" class="form-control select2" required>
                                     <option value="" disabled selected>-- Please Select --</option>
                                     @foreach($clients as $client)
-                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                    <option value="{{ $client->id }}">{{ $client->company }}</option>
                                     @endforeach
                                 </select>
                             </div>
